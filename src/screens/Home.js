@@ -15,10 +15,12 @@ import { useSelector } from 'react-redux';
 import LocationModal from '../components/Modal/LocationModal';
 import Geocoder from 'react-native-geocoding';
 import HomeHeader from '../components/headers/HomeHeader';
+import LocationHeaderModal from '../components/Modal/LocationHeaderModal';
 const Home = ({ navigation }) => {
   const coordinates = useSelector(state => state.coordinates)
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [headerModalVisible, setHeaderModalVisible] = useState(false)
   useEffect(() => { setModalVisible(true) }, [])
   const shops = LAYOUT.SHOPS_DATA;
 
@@ -54,7 +56,7 @@ const Home = ({ navigation }) => {
   }, [])
   return (
     <>
-      <HomeHeader navigation={navigation} />
+      <HomeHeader navigation={navigation} onPressLocation={() => setHeaderModalVisible(!headerModalVisible)} />
       <ScrollView showsVerticalScrollIndicator={false} style={{ paddingTop: 10 }}>
         {/* IMAGE CAROUSEL */}
         <View style={{ marginHorizontal: 10 }}>
@@ -75,9 +77,14 @@ const Home = ({ navigation }) => {
         </View>
       </ScrollView>
       <View style={styles.centeredView}>
-        <LocationModal
+        {/* <LocationModal
           setLocationModalVisible={setModalVisible}
           locationModalVisible={modalVisible}
+          navigation={navigation}
+        /> */}
+        <LocationHeaderModal
+          setLocationModalVisible={setHeaderModalVisible}
+          locationModalVisible={headerModalVisible}
           navigation={navigation}
         />
 

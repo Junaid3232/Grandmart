@@ -58,7 +58,7 @@ const DrawerSideBarMenu = props => {
                 <DrawerItem
                     label={({ focused, color }) =>
                         <DrawerSection focused={focused} color={color} icon='map-marker-outline' title='Addresses' />}
-                    onPress={() => { alert('Addresses Pressed') }}
+                    onPress={() => props.navigation.navigate('Addresses')}
                 />
                 <DrawerItem
                     label={({ focused, color }) =>

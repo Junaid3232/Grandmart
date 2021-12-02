@@ -12,3 +12,9 @@ export const addToCart = (item) => {
         payload: item
     }
 }
+
+export const removeToCart = (item) => {
+    return {
+        type: REMOVE_TO_CART,
+    }
+}

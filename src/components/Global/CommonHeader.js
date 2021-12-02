@@ -5,7 +5,7 @@ import Iconn from 'react-native-vector-icons/SimpleLineIcons'
 import { LAYOUT } from '../../layout/index'
 import { useSelector } from 'react-redux';
 
-const CommonHeader = ({ onPress, title, navigation }) => {
+const CommonHeader = ({ onPress, title, navigation, showCart = true }) => {
     const itemsInCart = useSelector(state => state.cart.cartItems.length)
     return <View style={styles.container}>
         <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
@@ -17,12 +17,14 @@ const CommonHeader = ({ onPress, title, navigation }) => {
 
             <Text style={styles.headerText}>{title}</Text>
         </View>
-        <TouchableOpacity style={{}} onPress={() => navigation.navigate('Cart')}>
-            <Iconn name="handbag" size={20} color={LAYOUT.COLORS.PRIMARY} />
-            {itemsInCart !== 0 && <View style={{ backgroundColor: 'red', borderRadius: 12, alignItems: 'center', position: 'absolute', right: -15, top: -10, width: 20, height: 20 }}>
-                <Text style={{ color: 'white', fontSize: 14 }}>{itemsInCart}</Text>
-            </View>}
-        </TouchableOpacity>
+        {showCart &&
+            <TouchableOpacity style={{}} onPress={() => navigation.navigate('Cart')}>
+                <Iconn name="handbag" size={20} color={LAYOUT.COLORS.PRIMARY} />
+                {itemsInCart !== 0 && <View style={{ backgroundColor: 'red', borderRadius: 12, alignItems: 'center', position: 'absolute', right: -15, top: -10, width: 20, height: 20 }}>
+                    <Text style={{ color: 'white', fontSize: 14 }}>{itemsInCart}</Text>
+                </View>}
+            </TouchableOpacity>
+        }
 
     </View>
 }

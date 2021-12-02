@@ -13,6 +13,7 @@ import MapScreen from '../screens/MapScreen';
 import Favourites from '../screens/Favourites/Favourites';
 import Orders from '../screens/Orders/Orders';
 import Profile from '../screens/Profile/Profile';
+import Addresses from '../screens/Addresses/Addresses';
 
 const StackShop = createNativeStackNavigator();
 const ShopStack = ({ navigation, props }) => {
@@ -87,6 +88,13 @@ const ShopStack = ({ navigation, props }) => {
       <StackShop.Screen
         name="Profile"
         component={Profile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <StackShop.Screen
+        name="Addresses"
+        component={Addresses}
         options={{
           headerShown: false,
         }}

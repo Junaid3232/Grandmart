@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Iconn from 'react-native-vector-icons/SimpleLineIcons'
 import { LAYOUT } from '../../layout/index'
 import { useSelector } from 'react-redux';
-const HomeHeader = ({ navigation }) => {
+const HomeHeader = ({ navigation, onPressLocation }) => {
     const itemsInCart = useSelector(state => state.cart.cartItems.length)
     return (
         <View style={styles.container}>
@@ -13,10 +13,12 @@ const HomeHeader = ({ navigation }) => {
                 style={{ flex: 0.1, justifyContent: 'center' }}>
                 <Icon name="bars" size={20} color={LAYOUT.COLORS.PRIMARY} />
             </TouchableOpacity>
-            <View style={{ flex: 0.7 }}>
+            <TouchableOpacity
+                onPress={onPressLocation}
+                style={{ flex: 0.7 }}>
                 <Text style={{ fontSize: 16, fontWeight: '600', color: LAYOUT.COLORS.PRIMARY, fontFamily: LAYOUT.FONTS.SEMI_BOLD }}>182</Text>
                 <Text style={{ fontFamily: LAYOUT.FONTS.LIGHT, }}>Islamabad</Text>
-            </View>
+            </TouchableOpacity>
             <View style={{ flex: 0.2, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                 <TouchableOpacity>
                     <Icon name="heart-o" size={20} color={LAYOUT.COLORS.PRIMARY} />
